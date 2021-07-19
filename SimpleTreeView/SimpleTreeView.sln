@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTreeView", "SimpleTreeView.csproj", "{9049F53F-C607-47E4-A452-6B2381CB30C0}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "SimpleTreeView.Core", "..\SimpleTreeView.Core\SimpleTreeView.Core.fsproj", "{71508F59-CCBB-492C-BCEE-72C0987D2EC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9049F53F-C607-47E4-A452-6B2381CB30C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9049F53F-C607-47E4-A452-6B2381CB30C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9049F53F-C607-47E4-A452-6B2381CB30C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9049F53F-C607-47E4-A452-6B2381CB30C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71508F59-CCBB-492C-BCEE-72C0987D2EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71508F59-CCBB-492C-BCEE-72C0987D2EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71508F59-CCBB-492C-BCEE-72C0987D2EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71508F59-CCBB-492C-BCEE-72C0987D2EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FE35C24-0252-4440-97A5-19791C80A11C}
+	EndGlobalSection
+EndGlobal
