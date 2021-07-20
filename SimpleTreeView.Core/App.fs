@@ -49,20 +49,24 @@ let update msg m =
     match msg with
     | Select id -> {m with PersonId = id}
 
+let rec recursiveBindings () : Binding<Tree, 'msg> list = [
+    "Name" |> Binding.oneWay (fun t -> t.Node.Name)
+    "Person" |> Binding.subModelSeq(
+        (fun t -> t.Childrens),
+        snd,
+        (fun e -> e.Node.Id),
+        snd,
+        recursiveBindings
+    )
+]
+
 let bindings () : Binding<Model, Msg> list = [
     "Persons" |> Binding.subModelSeq(
         (fun m -> m.Tree.Childrens),
-        (fun e -> e.Node.Id),
-        (fun () -> [
-            "Name" |> Binding.oneWay (fun (_, e) -> e.Node.Name)
-            "Person" |> Binding.subModelSeq(
-                (fun m -> (snd m).Childrens),
-                (fun e -> e.Node.Id),
-                (fun () -> [
-                    "Name" |> Binding.oneWay (fun (_, e) -> e.Node.Name)
-                ])
-            )
-        ])
+        snd,
+        (fun t -> t.Node.Id),
+        snd,
+        recursiveBindings
     )
 
     "SelectPerson" |> Binding.subModelSelectedItem("Persons", (fun m -> m.PersonId), Select)
