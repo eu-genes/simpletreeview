@@ -4,20 +4,20 @@ using System.Windows.Controls;
 
 namespace SimpleTreeView.Behaviors
 {
-    class BindableSelectedItemBehavior : Behavior<TreeView>
+    class BindableSelectedValueBehavior : Behavior<TreeView>
     {
-        #region SelectedItem Property
+        #region SelectedValue Property
 
-        public object SelectedItem
+        public object SelectedValue
         {
-            get { return (object)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            get { return (object)GetValue(SelectedValueProperty); }
+            set { SetValue(SelectedValueProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register("SelectedItem", typeof(object), typeof(BindableSelectedItemBehavior), new UIPropertyMetadata(null, OnSelectedItemChanged));
+        public static readonly DependencyProperty SelectedValueProperty =
+            DependencyProperty.Register("SelectedValue", typeof(object), typeof(BindableSelectedValueBehavior), new UIPropertyMetadata(null, OnSelectedValueChanged));
 
-        private static void OnSelectedItemChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        private static void OnSelectedValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var item = e.NewValue as TreeViewItem;
             if (item != null)
@@ -47,7 +47,7 @@ namespace SimpleTreeView.Behaviors
 
         private void OnTreeViewSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            this.SelectedItem = e.NewValue;
+            this.SelectedValue = this.AssociatedObject.SelectedValue;
         }
     }
 }
