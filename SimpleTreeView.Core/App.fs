@@ -50,6 +50,7 @@ let update msg m =
     | Select id -> {m with PersonId = id}
 
 let rec recursiveBindings () : Binding<Tree, 'msg> list = [
+    "Id" |> Binding.oneWay (fun t -> t.Node.Id)
     "Name" |> Binding.oneWay (fun t -> t.Node.Name)
     "Person" |> Binding.subModelSeq(
         (fun t -> t.Childrens),
@@ -69,7 +70,7 @@ let bindings () : Binding<Model, Msg> list = [
         recursiveBindings
     )
 
-    "SelectPerson" |> Binding.subModelSelectedItem("Persons", (fun m -> m.PersonId), Select)
+    "SelectPerson" |> Binding.twoWayOpt((fun m -> m.PersonId), Select)
 ]
 
 let mainDesignVm = ViewModel.designInstance (init ()) (bindings ())

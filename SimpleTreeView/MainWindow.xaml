@@ -10,11 +10,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Selected Person ID: "/>
+            <TextBlock Text="{Binding SelectPerson}"/>
+        </StackPanel>
         <TreeView 
             Grid.Column="0" Grid.Row="1" Margin="8" Height="344"
+            SelectedValuePath="Id"
             ItemsSource="{Binding Persons}">
             <e:Interaction.Behaviors>
-                <behaviors:BindableSelectedItemBehavior SelectedItem="{Binding SelectPerson, Mode=TwoWay}" />
+                <behaviors:BindableSelectedValueBehavior SelectedValue="{Binding SelectPerson, Mode=TwoWay}" />
             </e:Interaction.Behaviors>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Person}">
